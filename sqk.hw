@@ -1,0 +1,201 @@
+-- Question 1 count how many students passed the exam_analytics
+
+select
+count (result_status)
+from day_2_exam
+where result_status = 'Pass'
+
+-- Question 2 Find the average score of all students who failed
+
+select
+avg (total_score)
+from day_2_exam
+where result_status = 'Fail'
+
+
+-- Question 3 Get the highest score among all students
+
+select 
+max(total_score) as Highest_score
+from day_2_exam
+
+
+Question 4 Get the lowest score among passed Students
+
+select 
+min (total_score) as lowest_passed_score
+from day_2_exam
+where result_status = 'Pass'
+
+
+-Question 5 Sum the total marks of all students who scored above 40
+
+select
+Sum (total_score) as Total 
+from day_2_exam
+where total_score > 40
+
+
+-Question 6 Count students by result status for those who scored 35 or more
+
+select 
+Distinct result_status,
+count (result_status)
+from day_2_exam
+where total_score =35 or total_score >35
+group by result_status
+
+
+-- Question 7 Find Average score group by result status for students with scores between 30 and 40
+
+select 
+Distinct result_status,
+avg (total_score) as avg_score
+from day_2_exam
+where total_score between 30 and 40
+group by result_status 
+
+
+- Question 8 Get maximum and minimum scores grouped by result status for students who scores less than 35
+
+select 
+Distinct result_status,
+max (total_score),
+min (total_score)
+from day_2_exam
+where total_score <35
+group by result_status
+
+
+--Question 9 Count students by result status for those whose names start with 'A'
+
+select 
+Distinct result_status,
+count (result_status)
+from day_1_exam
+where student_name like 'A%'
+group by result_status
+
+--Quesion 10 Sum Total scores grouped by result status for those students who scored Exactly 35,40 or 45.
+
+select 
+distinct result_status,
+sum (total_score)
+from day_2_exam
+where total_score in (35,40,45)
+group by result_status
+
+
+-Question 11 count students by each score value , ordered by score descending
+
+select
+total_score,
+count (*) 
+from day_2_exam
+group by total_score
+order by total_score desc
+
+
+--Question 12 show Average score for each result status, Ordered by average score
+
+select
+distinct (result_status),
+Avg (total_score) as avg_score
+from day_2_exam
+group by result_status
+order by avg_score desc
+
+--Question 12 show Average score for each result status, Ordered by average score
+
+select
+distinct (result_status),
+Avg (total_score) as avg_score
+from day_2_exam
+group by result_status
+order by avg_score desc
+
+
+--Question 12 show Average score for each result status, Ordered by average score
+
+select
+distinct (result_status),
+Avg (total_score) as avg_score
+from day_2_exam
+group by result_status
+order by avg_score desc
+
+
+-Question 13 Count how many students got each score, only for scores above 30, ordered by sum 
+
+SELECT 
+total_score,
+count(*) as student_count
+from day_2_exam
+where total_score > 30
+group by total_score
+order by student_count DESC
+
+
+-Question 13 Count how many students got each score, only for scores above 30, ordered by sum 
+
+SELECT 
+total_score,
+count(*) as student_count
+from day_2_exam
+where total_score > 30
+group by total_score
+order by student_count DESC
+
+
+
+-Question 14 Get total marks sum for each result status, ordered by sum
+
+select
+distinct (result_status),
+sum (total_score) as total_marks
+from day_2_exam
+group by result_status
+order by total_marks desc
+
+
+--Question 15 Find minimum score for each result status, ordered by min score
+
+select
+distinct (result_status),
+min (total_score) as min_marks
+from day_2_exam
+group by result_status
+order by min_marks desc
+
+
+
+--Question 16 For passed students only, show count, average, max and min scores grouped by whether score is above 40
+
+select 
+count (total_score),
+round (avg (total_score),2),
+max (total_score),
+min (total_score)
+from day_2_exam
+where result_status = 'Pass'
+
+
+-Question 17 Count and average score for each result status, only for scores not equal to 35
+
+select
+distinct (result_status),
+count (*),
+round(avg (total_score),2) as Avg_score
+from day_2_exam
+where total_score <> 35
+group by result_status
+
+
+Question 19 For each result status, show count of students with scores greater than 30 and less than 40
+
+select
+distinct (result_status),
+count (total_score)
+from day_2_exam
+where total_score >30 and total_score <40
+group by result_status
